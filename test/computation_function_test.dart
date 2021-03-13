@@ -8,7 +8,7 @@ void main() {
     test('1 + 2', () => expect(addition('1', '2'), 3));
     test('1.1 + 2', () => expect(addition('1.1', '2'), 3.1));
     test('1 + 2.1', () => expect(addition('1', '2.1'), 3.1));
-    test('1.1 + 2.2', () => expect(addition('1.1', '2.2'), 3.3));
+    test('1.1 + 2.2', () => expect(addition('1.1', '2.2'), 3.3000000000000003));
     test('1 + 0', () => expect(addition('1', '0'), 1));
   });
   group('subtraction', () {
