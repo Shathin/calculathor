@@ -1,7 +1,9 @@
 import 'package:calculathor/services/button_type.dart';
 import 'package:calculathor/services/color_scheme.dart';
 import 'package:calculathor/services/calculator_stream.dart';
+import 'package:calculathor/services/logging_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CalculatorScreenArea extends StatefulWidget {
   @override
@@ -16,6 +18,11 @@ class _CalculatorScreenAreaState extends State<CalculatorScreenArea> {
   ButtonType computationType;
   String operatorSymbol;
   String operatorDescription;
+
+  void log() {
+    Provider.of<LoggingService>(context)
+        .log(operatorDescription, variableX, variableY, answer);
+  }
 
   void _operator(AsyncSnapshot<dynamic> snapshot) {
     if (answer == null) {
@@ -55,10 +62,12 @@ class _CalculatorScreenAreaState extends State<CalculatorScreenArea> {
   void evaluate() {
     if (computationType == ButtonType.opUnary && variableX != '') {
       answer = computationFunction(variableX).toString();
+      log();
     } else if (computationType == ButtonType.opBinary &&
         variableY != null &&
         variableY != '') {
       answer = computationFunction(variableX, variableY).toString();
+      log();
     }
   }
 
