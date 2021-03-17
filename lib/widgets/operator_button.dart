@@ -7,25 +7,25 @@ import '../services/color_scheme.dart';
 
 class OperatorButton extends CalculatorButton {
   OperatorButton({
-    @required String buttonText,
+    @required String btnText,
     Function computationFunction,
     String tooltipText,
-    ButtonType buttonType: ButtonType.opBinary,
-  })  : assert(buttonText != null && buttonText.length != 0),
+    ButtonType btnType: ButtonType.opBinary,
+  })  : assert(btnText != null && btnText.length != 0),
         super(
           child: Text(
-            buttonText,
+            btnText,
             style: TextStyle(
               fontSize: 20.0,
             ),
           ),
           onPressed: () => CalculatorStream.streamController.sink.add({
-            'dataType': buttonType,
+            'dataType': btnType,
             'data': computationFunction,
-            'operatorSymbol': buttonText,
+            'operatorSymbol': btnText,
             'operatorDescription': tooltipText,
           }),
-          buttonColor: buttonType == ButtonType.opUnary
+          btnColor: btnType == ButtonType.opUnary
               ? scientificOperatorButtonColor
               : basicOperatorButtonColor,
           tooltipText: tooltipText,

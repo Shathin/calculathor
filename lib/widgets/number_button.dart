@@ -7,21 +7,21 @@ import '../services/color_scheme.dart';
 
 class NumberButton extends CalculatorButton {
   NumberButton({
-    @required String buttonText,
+    @required String btnText,
     String tooltipText,
-  })  : assert(buttonText != null && buttonText.length != 0),
+  })  : assert(btnText != null && btnText.length != 0),
         super(
           child: Text(
-            buttonText,
+            btnText,
             style: TextStyle(
               fontSize: 20.0,
             ),
           ),
           onPressed: () => CalculatorStream.streamController.sink.add({
             'dataType': ButtonType.operand,
-            'data': buttonText,
+            'data': btnText,
           }),
-          buttonColor: numberButtonColor,
+          btnColor: numberButtonColor,
           tooltipText: tooltipText,
         );
 }
