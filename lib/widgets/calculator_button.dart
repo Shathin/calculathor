@@ -6,18 +6,18 @@ class CalculatorButton extends StatelessWidget {
   // final String buttonText;
   final Widget child;
   final Function onPressed;
-  final Color buttonColor;
+  final Color btnColor;
   final String tooltipText;
 
   CalculatorButton({
     // @required this.buttonText,
     @required this.child,
     @required this.onPressed,
-    @required this.buttonColor,
+    @required this.btnColor,
     @required this.tooltipText,
   })  : assert(child != null),
         assert(onPressed != null),
-        assert(buttonColor != null);
+        assert(btnColor != null);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CalculatorButton extends StatelessWidget {
           ),
           onPressed: this.onPressed,
           style: ElevatedButton.styleFrom(
-            primary: this.buttonColor,
+            primary: this.btnColor,
             elevation: 0.0,
             enabledMouseCursor: SystemMouseCursors.click,
             shape: CircleBorder(),

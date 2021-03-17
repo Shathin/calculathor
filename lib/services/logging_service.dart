@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:logging/logging.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,14 +22,9 @@ class LoggingService {
         Uri.https('calculathor-logstash-wvxbmc25wq-el.a.run.app', '/');
     final logString =
         "[CALCULATHOR] ${record.level.name}: ${record.time} ${record.message}";
-    print(logString);
     try {
-      var response = await http.post(logstashURI, body: logString);
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-    } catch (e) {
-      print(e.toString());
-    }
+      await http.post(logstashURI, body: logString);
+    } catch (e) {}
   }
 
   void log(String computationFunction, String variableX, String variableY,
